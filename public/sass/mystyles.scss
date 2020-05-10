@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+// Set your brand colors
+$purple: #474747;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: transparent;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+$box-color: #ffffff;
+$box-background-color: #e6e6ec;
+
+
+
+
+$progress-value-background-color: #861a1a;
+
+
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/_all.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/_all.sass";
+@import "../node_modules/bulma/sass/layout/_all.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+
+html, body {
+    overflow: hidden;
+}
+
+.columns {
+    padding: 10px;
+}
+
+.hometitle h1 {
+    font-family: 'Source Code Pro', monospace;
+    color: #F2AF29;
+}
+
+.hometitle strong {
+    color: #00d1b2;
+}
+
+.twitchbtn {
+    color: white;
+    background-color: #8812ff;
+}
+
+.twitchbtn:hover {
+    color: white;
+}
+
+.followers {
+    background-color: transparent;
+}
+
+
+.followersBox {
+    background-image: url("https://media.giphy.com/media/TJ9MxwF3KibO3bfhxY/source.gif");
+    height: 300px;
+    -webkit-animation: animation 1500ms linear infinite both;
+    animation: animation 1500ms linear infinite both;
+}
+
+.followersContents h1 {
+    padding-top: 50px;
+    color: white;
+}
+
+.followersContents h2 {
+    color: #00d1b2;
+}
