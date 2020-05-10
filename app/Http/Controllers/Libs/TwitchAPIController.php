@@ -33,8 +33,10 @@ class TwitchAPIController
      * Twitch function for getting access token
      */
     public function getAccessToken($code){
+        $to = Url::to('/twitch/auth/');
+
         $curl = curl_init();
-        $url = "https://id.twitch.tv/oauth2/token?client_id=k6dtt6boszj5nwtldal2wjikor51s3&client_secret=d8ms8otqqgkluds7evnlyefgm41ewg&code=" . $code . "&grant_type=authorization_code&redirect_uri=http://localhost:8000/twitch/auth/";
+        $url = "https://id.twitch.tv/oauth2/token?client_id=k6dtt6boszj5nwtldal2wjikor51s3&client_secret=d8ms8otqqgkluds7evnlyefgm41ewg&code=" . $code . "&grant_type=authorization_code&redirect_uri=" . $to;
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
