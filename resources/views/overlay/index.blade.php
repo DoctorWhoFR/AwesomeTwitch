@@ -13,12 +13,17 @@
     </div>
     <div class="columns" style="padding: 25px;">
         @foreach($overlays as $overlay)
-            <div class="column is-2 has-text-centered">
+            <div class="column is-4 has-text-centered">
                 <div class="box" style="background-color: #c4c4c4">
                     <h1 class="title">Overlay:</h1>
-                    <input type="text" class="submit" disabled value="http://127.0.0.1:8000/twitch/overlay/{{$overlay->user_id}}/{{$overlay->overlay_code}}">
+                    <input type="text" class="submit is-small" disabled value="{{URL::to('/twitch/overlay/')}}/{{$overlay->user_id}}/{{$overlay->overlay_code}}">
                     <br><br>
-                    <a href="http://127.0.0.1:8000/twitch/overlay/{{$overlay->user_id}}/{{$overlay->overlay_code}}" class="button is-primary">Charger l'overlay</a>
+
+                    <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
+                    <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
+                    <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
+                    <br><br>
+                    <a target="_blank" href="{{URL::to('/twitch/overlay/')}}/{{$overlay->user_id}}/{{$overlay->overlay_code}}" class="button is-primary">Charger l'overlay</a>
                 </div>
             </div>
         @endforeach

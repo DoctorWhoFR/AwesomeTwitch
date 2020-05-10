@@ -33,3 +33,4 @@ Route::get('/twitch/auth', 'AuthTwitchController@callback')->name('twitch.callba
 Route::get('/twitch/overlay/{id}/{overlay_code}', 'OverlayController@overlay')->name('twitch.overlay.view');
 Route::get('/twitch/overlay/', 'OverlayController@INDEX')->name('twitch.overlay');
 Route::get('/twitch/overlay/generate', 'OverlayController@generateOverlay')->name('twitch.overlay.url');
+Route::get('/twitch/overlay/faker', 'OverlayController@OverlayFaker')->name('twitch.overlay.faker');

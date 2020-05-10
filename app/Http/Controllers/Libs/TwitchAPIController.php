@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Libs;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Twitch API Controller
@@ -17,8 +18,8 @@ class TwitchAPIController
 
 
     public function generateUrl($redirect_uri, $scopes){
-        $redirect_uri = "http://locahost:8000/" . $redirect_uri;
-        $url = "https://id.twitch.tv/oauth2/authorize?redirect_uri=http://localhost:8000/twitch/auth/&response_type=code&scope=" . $scopes . "&client_id=k6dtt6boszj5nwtldal2wjikor51s3";
+        $to = Url::to('/twitch/auth/');
+        $url = "https://id.twitch.tv/oauth2/authorize?redirect_uri=".$to."&response_type=code&scope=" . $scopes . "&client_id=k6dtt6boszj5nwtldal2wjikor51s3";
         return $url;
     }
 
