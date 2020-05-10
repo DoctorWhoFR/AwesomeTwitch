@@ -24,8 +24,6 @@
 
                     <hr>
                     <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
-                    <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
-                    <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
                     <hr>
                     <p class="subtitle">Followers alerts:</p>
                     <input type="text" class="input is-small" disabled value="{{URL::to('/twitch/overlay/followers/')}}/{{$overlay->user_id}}/{{$overlay->overlay_code}}">
