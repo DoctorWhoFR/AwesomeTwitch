@@ -8,7 +8,7 @@ class Overlay extends Model
 {
     //
     protected $fillable = [
-        'followers', 'overlay_code', 'user_id'
+        'name', 'followers', 'overlay_code', 'user_id'
     ];
 
 }

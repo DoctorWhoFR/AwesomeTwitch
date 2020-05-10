@@ -31,6 +31,6 @@ Route::get('/twitch/auth', 'AuthTwitchController@callback')->name('twitch.callba
  * ROUTE FOR OVERLAY
  */
 Route::get('/twitch/overlay/followers/{id}/{overlay_code}', 'OverlayController@followers_alert')->name('twitch.overlay.view');
-Route::get('/twitch/overlay/', 'OverlayController@INDEX')->name('twitch.overlay');
-Route::get('/twitch/overlay/generate', 'OverlayController@generateOverlay')->name('twitch.overlay.url');
-Route::get('/twitch/overlay/faker', 'OverlayController@OverlayFaker')->name('twitch.overlay.faker');
+Route::get('/twitch/overlay/', 'OverlayController@INDEX')->name('twitch.overlay')->middleware(['auth']);
+Route::post('/twitch/overlay/generate', 'OverlayController@generateOverlay')->name('twitch.overlay.url')->middleware(['auth']);
+Route::get('/twitch/overlay/faker', 'OverlayController@OverlayFaker')->name('twitch.overlay.faker')->middleware(['auth']);

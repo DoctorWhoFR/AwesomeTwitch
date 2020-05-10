@@ -15,6 +15,7 @@ class CreateOverlaysTable extends Migration
     {
         Schema::create('overlays', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('followers');
             $table->string('overlay_code');
             $table->string('user_id');

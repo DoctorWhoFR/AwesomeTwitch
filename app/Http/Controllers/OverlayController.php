@@ -12,18 +12,37 @@ class OverlayController extends Controller
 {
     protected $user;
 
+    /**
+     * Index for overlay management and creation
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request){
         $user = Auth::user();
-        $overleys = Auth::user()->overlay;
+        $overleys = null;
+
+        if(Auth::user()->overlay){
+            $overleys =  Auth::user()->overlay;
+        }
 
         return view('overlay.index',['overlays'=>$overleys]);
     }
 
-    public function generateOverlay(){
+    /**
+     * Generate a new overlay
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @since 1.0
+     * @version 1.0
+     */
+    public function generateOverlay(Request$request){
         $user = Auth::user();
 
         $overlay = Overlay::create([
-            'followers'=>"test",
+            'name' => $request->get('name'),
+            'followers'=> "test",
             'overlay_code'=>$this->generateUUID(),
             'user_id'=>Auth::id()
         ]);
@@ -31,6 +50,17 @@ class OverlayController extends Controller
         return redirect()->route('twitch.overlay');
     }
 
+    /**
+     * Overlay faker
+     *
+     * Current Faker: Follower
+     * Planned: Sub, Gift
+     *
+     * @since 1.0
+     * @version 1.0
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function OverlayFaker(Request $request){
         if($request->get('faker') == null || $request->get('overlay') == null){ return redirect()->route('twitch.overlay'); }
 
@@ -43,7 +73,7 @@ class OverlayController extends Controller
     }
 
     /**
-     * Followers alerts
+     * Followers alerts render function
      *
      * @param $id
      * @param $overlay_code
@@ -82,4 +112,7 @@ class OverlayController extends Controller
 
         return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed]);
     }
+
+
+
 }
