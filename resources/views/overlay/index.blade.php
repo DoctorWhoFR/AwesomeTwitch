@@ -17,7 +17,7 @@
                 <div class="box" style="background-color: #c4c4c4">
                     <h1 class="title">Overlay:</h1>
                     <input type="text" class="submit is-small" disabled value="{{URL::to('/twitch/overlay/')}}/{{$overlay->user_id}}/{{$overlay->overlay_code}}">
-                    <br><br>
+                    <br><br> 
 
                     <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
                     <a href="{{URL::to('/twitch/overlay/faker')}}?faker=follower&overlay={{$overlay->user_id}}" class="button is-danger is-small">Faker Followers</a>
