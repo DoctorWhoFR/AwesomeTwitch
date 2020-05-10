@@ -28,7 +28,7 @@ class OverlayController extends Controller
             'user_id'=>Auth::id()
         ]);
 
-        return redirect("http://127.0.0.1:8000/twitch/overlay" . "/" . Auth::id() . "/" . $overlay->overlay_code);
+        return redirect()->route('twitch.overlay');
     }
 
     public function OverlayFaker(Request $request){
