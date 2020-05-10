@@ -42,7 +42,14 @@ class OverlayController extends Controller
         return redirect()->route('twitch.overlay');
     }
 
-    public function overlay($id, $overlay_code){
+    /**
+     * Followers alerts
+     *
+     * @param $id
+     * @param $overlay_code
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function followers_alert($id, $overlay_code){
 
         $overlay = Overlay::where(['overlay_code'=>$overlay_code])->get();
 
@@ -73,6 +80,6 @@ class OverlayController extends Controller
         }
 
 
-        return view('overlay', ['followers'=>$followers, 'followed'=>$followed]);
+        return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed]);
     }
 }
