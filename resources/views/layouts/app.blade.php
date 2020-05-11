@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/nuclear.css')}}">
 
 
     <script src="https://kit.fontawesome.com/2dc3e976b0.js" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="{{url()->route('home')}}">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
         </a>
 
@@ -39,8 +39,8 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Home
+            <a class="navbar-item" href="{{url()->route('twitch.overlay')}}">
+                Overlay Home
             </a>
 
             <a class="navbar-item">

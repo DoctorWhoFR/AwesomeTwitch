@@ -37,15 +37,34 @@ class OverlayController extends Controller
      * @since 1.0
      * @version 1.0
      */
-    public function generateOverlay(Request$request){
+    public function generateOverlay(Request $request){
         $user = Auth::user();
 
-        $overlay = Overlay::create([
-            'name' => $request->get('name'),
-            'followers'=> "test",
-            'overlay_code'=>$this->generateUUID(),
-            'user_id'=>Auth::id()
+        $request->validate([
+            'file' => 'required|mimes:text/html,html,php',
         ]);
+
+        $fileName = time().'.'.$request->file->extension();
+
+        $request->file->move(public_path('uploads'), $fileName);
+
+        if($request->get('checkbox') == true){
+            $overlay = Overlay::create([
+                'name' => $request->get('name'),
+                'followers'=> "test",
+                'overlay_code'=>$this->generateUUID(),
+                'user_id'=>Auth::id(),
+                'custom'=>true,
+                'code'=>$fileName,
+            ]);
+        } else {
+            $overlay = Overlay::create([
+                'name' => $request->get('name'),
+                'followers'=> "test",
+                'overlay_code'=>$this->generateUUID(),
+                'user_id'=>Auth::id()
+            ]);
+        }
 
         return redirect()->route('twitch.overlay');
     }
@@ -64,10 +83,10 @@ class OverlayController extends Controller
     public function OverlayFaker(Request $request){
         if($request->get('faker') == null || $request->get('overlay') == null){ return redirect()->route('twitch.overlay'); }
 
-        $overlay = Overlay::find($request->get('overlay'));
+        $overlay = Overlay::where('overlay_code', $request->get('overlay'))->get();
 
-        $overlay->followers = "null";
-        $overlay->save();
+        $overlay[0]->followers = "null";
+        $overlay[0]->save();
 
         return redirect()->route('twitch.overlay');
     }
@@ -82,8 +101,7 @@ class OverlayController extends Controller
     public function followers_alert($id, $overlay_code){
 
         $overlay = Overlay::where(['overlay_code'=>$overlay_code])->get();
-
-        if($overlay[0] == null){return redirect()->route('twitch.overlay');}
+        if(!isset($overlay[0])){ return redirect()->route('twitch.overlay'); }
 
         $tapi = new TwitchAPIController();
 
@@ -109,8 +127,12 @@ class OverlayController extends Controller
 
         }
 
+        $custom_content = null;
+        if(file_exists('uploads/'.$overlay[0]->code)){
+            $custom_content = file_get_contents('uploads/' . $overlay[0]->code);
+        }
 
-        return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed]);
+        return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed, 'default'=>$overlay[0]->custom, 'code'=> $custom_content]);
     }
 
 

@@ -19,6 +19,8 @@ class CreateOverlaysTable extends Migration
             $table->string('followers');
             $table->string('overlay_code');
             $table->string('user_id');
+            $table->string('custom', 10000)->default(false);
+            $table->string('code')->nullable();
             $table->timestamps();
         });
     }
