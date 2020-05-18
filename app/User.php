@@ -44,4 +44,8 @@ class User extends Authenticatable
         return $this->hasMany(Overlay::class);
     }
 
+    public function servers(){
+        return $this->hasMany(HetznerServer::class);
+    }
+
 }

@@ -34,3 +34,8 @@ Route::get('/twitch/overlay/followers/{id}/{overlay_code}', 'OverlayController@f
 Route::get('/twitch/overlay/', 'OverlayController@INDEX')->name('twitch.overlay')->middleware(['auth']);
 Route::post('/twitch/overlay/generate', 'OverlayController@generateOverlay')->name('twitch.overlay.url')->middleware(['auth']);
 Route::get('/twitch/overlay/faker', 'OverlayController@OverlayFaker')->name('twitch.overlay.faker')->middleware(['auth']);
+
+/**
+ * ROUTE FOR HetznerApi
+ */
+Route::get('/hetzner/', 'Libs\HetznerAPIController@index');
