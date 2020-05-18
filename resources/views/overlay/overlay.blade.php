@@ -1,17 +1,14 @@
 @extends('layouts.without')
 @section('content')
-    @if($default)
+
         @if($followed)
-            {{ html_entity_decode($code) }}
-        @endif
-    @else
-        @if($followed)
+
             <section class="hero is-fullheight followers">
                 <div class="hero-body has-text-centered">
                     <div class="container box followersBox target">
                         <div class="followersContents">
                             <h1 class="title">
-                                Bienvenue {{$followers->data[0]->from_name}} !!!
+                                Bienvenue @php $followers->data[0]->from_name @endphp !!!
                             </h1>
                             <h2 class="subtitle">
                                 Assie toi, détend toi ^^ <3
@@ -66,7 +63,7 @@
 
             </script>
         @endif
-    @endif
+
 
 
 @endsection

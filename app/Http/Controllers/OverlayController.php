@@ -40,15 +40,16 @@ class OverlayController extends Controller
     public function generateOverlay(Request $request){
         $user = Auth::user();
 
-        $request->validate([
-            'file' => 'required|mimes:text/html,html,php',
-        ]);
+        if($request->get('custom') == "on"){
 
-        $fileName = time().'.'.$request->file->extension();
+            $request->validate([
+                'file' => 'required|mimes:text/html,html,php',
+            ]);
 
-        $request->file->move(public_path('uploads'), $fileName);
+            $fileName = time().'.'.$request->file->extension();
 
-        if($request->get('checkbox') == true){
+            $request->file->move(public_path('uploads'), $fileName);
+
             $overlay = Overlay::create([
                 'name' => $request->get('name'),
                 'followers'=> "test",
@@ -119,7 +120,6 @@ class OverlayController extends Controller
                 $overlay[0]->save();
 
                 $followed = true;
-
             }
 
 
@@ -128,11 +128,11 @@ class OverlayController extends Controller
         }
 
         $custom_content = null;
-        if(file_exists('uploads/'.$overlay[0]->code)){
+        if($overlay[0]->code != null){
             $custom_content = file_get_contents('uploads/' . $overlay[0]->code);
         }
 
-        return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed, 'default'=>$overlay[0]->custom, 'code'=> $custom_content]);
+        return view('overlay.overlay', ['followers'=>$followers, 'followed'=>$followed, 'code'=> $custom_content]);
     }
 
 

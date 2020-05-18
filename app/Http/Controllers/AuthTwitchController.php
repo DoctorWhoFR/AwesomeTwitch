@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
  * @version 1.0
  *
  * Controller for twitch authentification
+ *
  * Class AuthTwitchController
  * @package App\Http\Controllers
  */
@@ -22,11 +23,13 @@ class AuthTwitchController extends Controller
 
     /**
      * @param Request $request
-     * @since 1.0
+     * @return \Illuminate\Http\RedirectResponse
      * @version 1.0
      * @api
      *
      * Callback TwitchAPI
+     *
+     * @since 1.0
      */
     public function callback(Request $request){
         $tapi = new TwitchAPIController();

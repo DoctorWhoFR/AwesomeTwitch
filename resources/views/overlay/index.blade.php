@@ -17,7 +17,7 @@
                     <input id="name" name="name" type="text" class="input">
                     <br><br>
                     <label for="checkbox">Custom page:</label>
-                    <input id="checkbox" name="checkbox" type="checkbox" class="checkbox">
+                    <input id="custom" name="custom" type="checkbox" class="checkbox">
                     <br><br>
                     <label for="checkbox">Custom content (only if custom page is needed):</label>
                     <br>
