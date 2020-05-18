@@ -17,6 +17,11 @@ class TwitchAPIController
 {
 
 
+    /**
+     * @param $redirect_uri
+     * @param $scopes
+     * @return string
+     */
     public function generateUrl($redirect_uri, $scopes){
         $to = Url::to('/twitch/auth/');
         $url = "https://id.twitch.tv/oauth2/authorize?redirect_uri=".$to."&response_type=code&scope=" . $scopes . "&client_id=k6dtt6boszj5nwtldal2wjikor51s3";
