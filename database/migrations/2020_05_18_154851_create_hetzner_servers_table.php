@@ -18,7 +18,6 @@ class CreateHetznerServersTable extends Migration
             $table->string("name");
             $table->string("server_type");
             $table->string("location");
-            $table->string("created_at");
             $table->string("user_id");
             $table->timestamps();
         });

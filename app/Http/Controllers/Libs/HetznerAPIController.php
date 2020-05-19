@@ -58,7 +58,6 @@ class HetznerAPIController
         $server->location = $location;
         $server->server_type = $server_type;
         $server->user_id = $user_id;
-        $server->create_at = time();
 
         $server->save();
 
